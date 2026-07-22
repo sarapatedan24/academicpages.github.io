@@ -38,3 +38,32 @@ Internships
 * **Research Intern, MINIMAX**, Feb 2025 – Present
 * **Research Intern, Tencent WXG**, Jun 2024 – Sep 2024 (advisor: Zifei Shan)
 * **Research Intern, Shanghai AI Lab**, Jun 2023 – Dec 2023 (advisor: Prof. Yu Cheng)
+
+Selected Publications
+======
+
+A full list is available on the [Publications]({{ '/publications/' | relative_url }}) page. You can also find my articles on [my Google Scholar profile](https://scholar.google.com/citations?hl=en&user=tbK9jl4AAAAJ&view_op=list_works&sortby=pubdate).
+
+{% include base_path %}
+
+<!-- New style rendering if publication categories are defined -->
+{% if site.publication_category %}
+  {% for category in site.publication_category  %}
+    {% assign title_shown = false %}
+    {% for post in site.publications reversed %}
+      {% if post.category != category[0] %}
+        {% continue %}
+      {% endif %}
+      {% unless title_shown %}
+        <h3>{{ category[1].title }}</h3><hr />
+        {% assign title_shown = true %}
+      {% endunless %}
+      {% include archive-single.html %}
+    {% endfor %}
+  {% endfor %}
+{% else %}
+  {% for post in site.publications reversed %}
+    {% include archive-single.html %}
+  {% endfor %}
+{% endif %}
+
